@@ -40,6 +40,20 @@ const NewsList = () => {
       <button onClick={handleToggleView} className="toggle-button">
         {isGridView ? "List View" : "Grid View"}
       </button>
+      <span>
+        <a
+          style={{
+            color: "green",
+            marginLeft: "60%",
+            fontSize: "20px",
+            fontWeight: "bold",
+          }}
+          href="/login"
+        >
+          Back To Login Page
+        </a>
+      </span>
+
       {loading ? (
         <p>Loading...</p>
       ) : (
