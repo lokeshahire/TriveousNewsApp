@@ -15,6 +15,7 @@ const NewsList = () => {
         const response = await axios.get(
           `https://newsapi.org/v2/top-headlines?country=in&apiKey=${apiKey}`
         );
+
         setNews(response.data.articles);
         setLoading(false);
       } catch (error) {
