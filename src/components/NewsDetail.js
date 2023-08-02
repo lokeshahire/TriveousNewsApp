@@ -3,7 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import "./NewsDetail.css";
 
 const NewsDetail = () => {
-  const { title } = useParams(); // Get the 'title' parameter from the URL
+  const { title } = useParams();
   const [article, setArticle] = useState(null);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
@@ -11,7 +11,6 @@ const NewsDetail = () => {
   useEffect(() => {
     const fetchArticleDetails = async () => {
       try {
-        // Replace 'YOUR_NEWS_API_KEY' with your actual News API key
         const apiKey = "c66a4a4fc35a4b96ae40f046a628b109";
         const response = await fetch(
           `https://newsapi.org/v2/top-headlines?country=in&apiKey=${apiKey}`
@@ -24,7 +23,6 @@ const NewsDetail = () => {
         if (matchedArticle) {
           setArticle(matchedArticle);
         } else {
-          // Handle the case when the article with the given title is not found
           console.error("Article not found");
         }
 
@@ -38,12 +36,10 @@ const NewsDetail = () => {
     fetchArticleDetails();
   }, [title]);
 
-  // Function to create a slug from the title
   const createSlug = (title) => {
     return title.replace(/\s+/g, "-").toLowerCase();
   };
   const handleCloseModal = () => {
-    // Navigate back to the NewsList page
     navigate("/news");
   };
 

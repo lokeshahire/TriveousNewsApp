@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import firebase from "../firebase/firebase"; // Make sure the path is correct
+import firebase from "../firebase/firebase";
 import { useNavigate } from "react-router-dom";
 import "./Register.css";
 
@@ -14,15 +14,12 @@ const Register = () => {
       .auth()
       .createUserWithEmailAndPassword(email, password)
       .then((userCredential) => {
-        // Registration successful
         const user = userCredential.user;
         navigate("/login");
 
         console.log("User registered:", user);
-        // Optionally, you can do something here after successful registration
       })
       .catch((error) => {
-        // Registration failed
         setError(error.message);
         console.error("Registration error:", error);
       });

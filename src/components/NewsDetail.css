@@ -1,6 +1,3 @@
-/* NewsDetail.css */
-
-/* Full-screen modal overlay */
 .news-detail-overlay {
   position: fixed;
   top: 0;
@@ -13,7 +10,6 @@
   align-items: center;
 }
 
-/* Modal content */
 .news-detail-modal {
   max-width: 800px;
   width: 90%;
@@ -52,7 +48,6 @@
   text-decoration: underline;
 }
 
-/* Close button */
 .close-button {
   position: absolute;
   /* top: 10px;

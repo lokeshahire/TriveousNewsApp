@@ -1,4 +1,3 @@
-// Login.js
 import React, { useState } from "react";
 import firebase from "../firebase/firebase"; // Make sure the path is correct
 import { useNavigate } from "react-router-dom";
@@ -15,15 +14,12 @@ const Login = () => {
       .auth()
       .signInWithEmailAndPassword(email, password)
       .then((userCredential) => {
-        // Login successful
         const user = userCredential.user;
         navigate("/news");
 
         console.log("User logged in:", user);
-        // Optionally, you can do something here after successful login
       })
       .catch((error) => {
-        // Login failed
         setError(error.message);
         console.error("Login error:", error);
       });

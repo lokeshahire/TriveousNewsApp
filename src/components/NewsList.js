@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./NewsList.css";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const NewsList = () => {
   const [news, setNews] = useState([]);
@@ -26,7 +26,6 @@ const NewsList = () => {
     fetchNews();
   }, []);
 
-  // Function to toggle between list and grid view
   const handleToggleView = () => {
     setIsGridView((prevIsGridView) => !prevIsGridView);
   };

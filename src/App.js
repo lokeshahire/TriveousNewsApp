@@ -1,45 +1,36 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import { auth } from "./firebase/firebase";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  Navigate,
+} from "react-router-dom";
 import { useSelector } from "react-redux";
 import Register from "./components/Register";
 import Login from "./components/Login";
 import NewsList from "./components/NewsList";
 import NewsDetail from "./components/NewsDetail";
-// import NewsDetail from "./components/NewsDetail";
-// import NewsDetail from "./components/NewsDetail";
 
 const App = () => {
   const { user } = useSelector((state) => state.auth);
 
-  // Function to render NewsList component only if the user is authenticated
-  const PrivateRoute = ({ component: Component, ...rest }) => (
-    <Route
-      {...rest}
-      render={(props) => (user ? <Component {...props} /> : <Login />)}
-    />
-  );
+  const PrivateRoute = ({ path, element }) => {
+    return (
+      <Route path={path}>
+        <React.Fragment>{element}</React.Fragment>
+      </Route>
+    );
+  };
 
   return (
     <Router>
       <div>
-        <h1
-          style={{
-            fontSize: "50px",
-            textAlign: "center",
-            color: "#E81828",
-          }}
-        >
-          Triveous News App
-        </h1>
+        <h1 className="app-title">Triveous News App</h1>
         <Routes>
-          {/* Public routes */}
           <Route path="/" element={<Register />} />
           <Route path="/login" element={<Login />} />
-
-          {/* Private routes */}
-          <Route path="/news" element={<NewsList />} />
-          <Route path="/news/:title" element={<NewsDetail />} />
+          <Route path="/news" element={NewsList} />
+          <Route path="/news/:title" element={NewsDetail} />
         </Routes>
       </div>
     </Router>
