@@ -13,7 +13,7 @@ const NewsDetail = () => {
       try {
         const apiKey = "c66a4a4fc35a4b96ae40f046a628b109";
         const response = await fetch(
-          `https://newsapi.org/v2/top-headlines?country=in&apiKey=${apiKey}`
+          `https://gnews.io/api/v4/top-headlines?category=general&lang=en&country=in&max=10&apikey=f6de42028faa68e48a78df34dd15b251`
         );
         const data = await response.json();
         const matchedArticle = data.articles.find(
@@ -56,9 +56,7 @@ const NewsDetail = () => {
 
             <h2>{article.title}</h2>
             <p>{article.description}</p>
-            {article.urlToImage && (
-              <img src={article.urlToImage} alt={article.title} />
-            )}
+            {article.image && <img src={article.image} alt={article.title} />}
             <a href={article.url} target="_blank" rel="noopener noreferrer">
               Read More
             </a>

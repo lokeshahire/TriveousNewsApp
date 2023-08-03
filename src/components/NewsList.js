@@ -12,11 +12,14 @@ const NewsList = () => {
     const fetchNews = async () => {
       try {
         const apiKey = "c66a4a4fc35a4b96ae40f046a628b109";
+        // const response = await axios.get(
+        //   `https://newsapi.org/v2/top-headlines?country=in&apiKey=${apiKey}`
+        // );
         const response = await axios.get(
-          `https://newsapi.org/v2/top-headlines?country=in&apiKey=${apiKey}`
+          `https://gnews.io/api/v4/top-headlines?category=general&lang=en&country=in&max=10&apikey=f6de42028faa68e48a78df34dd15b251`
         );
-
         setNews(response.data.articles);
+        console.log(response.data.articles);
         setLoading(false);
       } catch (error) {
         console.error("Error fetching news:", error);
@@ -64,8 +67,8 @@ const NewsList = () => {
               <Link to={`/news/${createSlug(article.title)}`}>
                 <h3>{article.title}</h3>
                 <p>{article.description}</p>
-                {article.urlToImage ? (
-                  <img src={article.urlToImage} alt={article.title} />
+                {article.image ? (
+                  <img src={article.image} alt={article.title} />
                 ) : (
                   <img
                     src={
